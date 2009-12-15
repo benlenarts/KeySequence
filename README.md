@@ -3,6 +3,8 @@ KeySequence
 
 Create custom events for sequences of key presses.
 
+![Screenshot](http://benlenarts.github.com/KeySequence/images/asdf.png)
+
 How to use
 ----------
 

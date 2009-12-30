@@ -30,7 +30,7 @@ function keycombo(event) {
 
 Element.Events.addKeySequence = function(name, sequence, options) {
   options = options || {};
-  var withModifiers = options.withModifiers || true;
+  var withModifiers = options.withModifiers !== false;
 
   var buffer = new Array(sequence.length);
   var target = sequence.toString();

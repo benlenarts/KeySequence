@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>KeySequence Demo</title>
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; }
+</style>
+<script src="core.js"></script>
+<script src="more.js"></script>
+<script src="master/Source/KeySequence.js"></script>
+<script id="demo">
+
+// Basic usage
+Element.Events.addKeySequence('aoeu', 'a o e u'.split(' '));
+// Supports modifier keys
+Element.Events.addKeySequence('BOOH', 'shift-b shift-o shift-o shift-h'.split(' '));
+// but can ignore them too
+Element.Events.addKeySequence('aoeuNoCase', 'a o e u'.split(' '), {withModifiers: false});
+
+document.addEvent('aoeu', function() { $('indicator-aoeu').highlight(); });
+document.addEvent('BOOH', function() { $('indicator-BOOH').highlight(); });
+document.addEvent('aoeuNoCase', function() { $('indicator-noCase').highlight(); });
+
+</script>
+<script>
+document.addEvent('domready', function() {
+  $$('pre#demo-code').set('html', $$('head>script#demo')[0].get('html'));
+});
+</script>
+</head>
+
+<body>
+  <h1>KeySequence Demo</h1>
+  <div class="indicators">
+    <div class="indicator" id="indicator-aoeu">aoeu</div>
+    <div class="indicator" id="indicator-BOOH">BOOH</div>
+    <div class="indicator" id="indicator-noCase">AoEu</div>
+  </div>
+  <pre id="demo-code">
+  </pre>
+  <p>
+    <a href="http://mootools.net/forge/p/keysequence">Download KeySequence from the Forge</a>
+  </p>
+</body>
+</html>

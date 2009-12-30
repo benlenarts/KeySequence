@@ -38,6 +38,7 @@ Element.Events.addKeySequence = function(name, sequence, options) {
   Element.Events[name] = {
     base: 'keyup',
     condition: function(event) {
+      if (!event.key) return false;
       buffer.shift();
       buffer.push(withModifiers ? keycombo(event) : event.key);
       return buffer.toString() == target;

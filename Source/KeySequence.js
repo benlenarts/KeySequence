@@ -17,7 +17,21 @@ provides: [Element.Events.addKeySequence]
 ...
 */
 
-Element.Events.addKeySequence = function(name, sequence) {
+(function() {
+
+function keycombo(event) {
+  var mods = '';
+  if (event.shift) mods += 'shift-';
+  if (event.control) mods += 'control-';
+  if (event.alt) mods += 'alt-';
+  if (event.meta) mods += 'meta-';
+  return mods + event.key;
+}
+
+Element.Events.addKeySequence = function(name, sequence, options) {
+  options = options || {};
+  var withModifiers = options.withModifiers || true;
+
   var buffer = new Array(sequence.length);
   var target = sequence.toString();
 
@@ -25,8 +39,10 @@ Element.Events.addKeySequence = function(name, sequence) {
     base: 'keyup',
     condition: function(event) {
       buffer.shift();
-      buffer.push(event.key);
+      buffer.push(withModifiers ? keycombo(event) : event.key);
       return buffer.toString() == target;
     }
   }
 }
+
+})();

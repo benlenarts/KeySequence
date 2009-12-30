@@ -9,6 +9,8 @@ authors:
 
 requires:
   core/1.2.4: '*'
+# actually:
+# - core/1.2.4: Element.Event
 
 provides: [Element.Events.addKeySequence]
 

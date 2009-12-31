@@ -38,7 +38,7 @@ Element.Events.addKeySequence = function(name, sequence, options) {
   Element.Events[name] = {
     base: 'keyup',
     condition: function(event) {
-      if (!event.key || event.key.getCharCode(0) < 32) return false;
+      if (!event.key || event.key.charCodeAt(0) < 32) return false;
       buffer.shift();
       buffer.push(withModifiers ? keycombo(event) : event.key);
       return buffer.toString() == target;

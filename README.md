@@ -18,3 +18,4 @@ Now you can attach handlers to this new event:
 	#JS
 	document.addEvent('konamicode', function() { alert('KONAMI'); });
 
+For more examples please check out the [demo](http://benlenarts.github.com/KeySequence/)!
